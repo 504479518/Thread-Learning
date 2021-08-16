@@ -9,7 +9,7 @@ public class InstanceAndClass {
 	
     private static class SynClass extends Thread{
         @Override
-        public void run() {
+        public void run()         {
             System.out.println("TestClass is running...");
             synClass();
         }
@@ -23,7 +23,7 @@ public class InstanceAndClass {
         }
 
         @Override
-        public void run() {
+        public void run()         {
             System.out.println("TestInstance is running..."+SynClassAndInstance);
             SynClassAndInstance.instance();
         }

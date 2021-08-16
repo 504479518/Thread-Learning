@@ -25,6 +25,7 @@ public class ThreadLocalOOM {
     public static void main(String[] args) throws InterruptedException {
         for (int i = 0; i < TASK_LOOP_SIZE; ++i) {
             poolExecutor.execute(new Runnable() {
+                @Override
                 public void run() {
                     new LocalVariable();
                     System.out.println("use local varaible");

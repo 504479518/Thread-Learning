@@ -3,10 +3,10 @@ package cn.enjoyedu.ch1.base;
 import cn.enjoyedu.tools.SleepTools;
 
 /**
- *类说明：演示Join（）方法的使用
+ * 类说明：演示Join（）方法的使用
  */
 public class UseJoin {
-	
+
     static class Goddess implements Runnable {
         private Thread thread;
 
@@ -21,7 +21,7 @@ public class UseJoin {
         public void run() {
             System.out.println("Goddess开始排队打饭.....");
             try {
-                if(thread!=null) {
+                if (thread != null) {
                     thread.join();
                 }
             } catch (InterruptedException e) {

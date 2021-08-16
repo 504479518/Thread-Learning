@@ -4,7 +4,7 @@ package cn.enjoyedu.ch1.vola;
  * 类说明：
  */
 public class NotSafe {
-    private volatile long count =0;
+    private volatile long count = 0;
 
     public long getCount() {
         return count;
@@ -15,12 +15,12 @@ public class NotSafe {
     }
 
     //count进行累加
-    public void incCount(){
+    public void incCount() {
         count++;
     }
 
     //线程
-    private static class Count extends Thread{
+    private static class Count extends Thread {
 
         private NotSafe simplOper;
 
@@ -30,7 +30,7 @@ public class NotSafe {
 
         @Override
         public void run() {
-            for(int i=0;i<10000;i++){
+            for (int i = 0; i < 10000; i++) {
                 simplOper.incCount();
             }
         }

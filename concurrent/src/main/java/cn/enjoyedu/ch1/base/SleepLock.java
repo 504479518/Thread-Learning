@@ -25,7 +25,7 @@ public class SleepLock {
     private class ThreadSleep extends Thread{
 
         @Override
-        public void run() {
+        public void run()         {
             String threadName = Thread.currentThread().getName();
             System.out.println(threadName+" will take the lock");
             try {
@@ -44,7 +44,7 @@ public class SleepLock {
     private class ThreadNotSleep extends Thread{
 
         @Override
-        public void run() {
+        public void run()         {
             String threadName = Thread.currentThread().getName();
             System.out.println(threadName+" will take the lock time="+System.currentTimeMillis());
             synchronized(lock) {

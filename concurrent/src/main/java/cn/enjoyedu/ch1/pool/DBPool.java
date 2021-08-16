@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.util.LinkedList;
 
 /**
- *类说明：连接池的实现
+ * 类说明：连接池的实现
  */
 public class DBPool {
 

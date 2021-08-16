@@ -9,14 +9,15 @@ public class ThreadLocalUnsafe implements Runnable {
 
     public static Number number = new Number(0);
 
+    @Override
     public void run() {
         //每个线程计数加一
-        number.setNum(number.getNum()+1);
-      //将其存储到ThreadLocal中
+        number.setNum(number.getNum() + 1);
+        //将其存储到ThreadLocal中
         value.set(number);
         SleepTools.ms(2);
         //输出num值
-        System.out.println(Thread.currentThread().getName()+"="+value.get().getNum());
+        System.out.println(Thread.currentThread().getName() + "=" + value.get().getNum());
     }
 
     public static ThreadLocal<Number> value = new ThreadLocal<Number>() {
