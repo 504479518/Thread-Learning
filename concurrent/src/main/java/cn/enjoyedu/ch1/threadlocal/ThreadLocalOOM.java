@@ -10,10 +10,7 @@ import java.util.concurrent.TimeUnit;
 public class ThreadLocalOOM {
     private static final int TASK_LOOP_SIZE = 500;
 
-    final static ThreadPoolExecutor poolExecutor
-            = new ThreadPoolExecutor(5, 5, 1,
-            TimeUnit.MINUTES,
-            new LinkedBlockingQueue<>());
+    final static ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(5, 5, 1, TimeUnit.MINUTES, new LinkedBlockingQueue<>());
 
     static class LocalVariable {
         private byte[] a = new byte[1024 * 1024 * 5];/*5M大小的数组*/
@@ -31,7 +28,6 @@ public class ThreadLocalOOM {
                     System.out.println("use local varaible");
                 }
             });
-
             Thread.sleep(100);
         }
         System.out.println("pool execute over");

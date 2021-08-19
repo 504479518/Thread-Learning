@@ -18,7 +18,8 @@ public class Express {
 
     /* 变化公里数，然后通知处于wait状态并需要处理公里数的线程进行业务处理*/
     public synchronized void changeKm() {
-        //TODO
+        this.km = 101;
+        notifyAll();
     }
 
     /* 变化地点，然后通知处于wait状态并需要处理地点的线程进行业务处理*/
@@ -28,7 +29,15 @@ public class Express {
     }
 
     public synchronized void waitKm() {
-        //TODO
+        while (this.km < 100) {
+            try {
+                wait();
+                System.out.println("Check Site thread[" + Thread.currentThread().getId()
+                        + "] is be notified");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
         System.out.println("the Km is " + this.km + ",I will change db");
     }
 
