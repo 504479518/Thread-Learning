@@ -1,5 +1,8 @@
 package cn.enjoyedu.ch1.pool;
 
+import javafx.concurrent.Worker;
+import org.apache.commons.lang.StringUtils;
+
 import java.sql.Connection;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -52,6 +55,8 @@ public class DBPoolTest {
                     if (connection != null) {
                         try {
                             connection.createStatement();
+//                            PreparedStatement preparedStatement = connection.prepareStatement("");
+//                            preparedStatement.execute();
                             connection.commit();
                         } finally {
                             pool.releaseConnection(connection);
@@ -59,10 +64,10 @@ public class DBPoolTest {
                         }
                     } else {
                         notGot.incrementAndGet();
-                        System.out.println(Thread.currentThread().getName()
-                                + "等待超时!");
+                        System.out.println(Thread.currentThread().getName() + "等待超时!");
                     }
                 } catch (Exception ex) {
+
                 } finally {
                     count--;
                 }

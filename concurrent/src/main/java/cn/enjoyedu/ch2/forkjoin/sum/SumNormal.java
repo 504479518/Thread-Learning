@@ -2,6 +2,9 @@ package cn.enjoyedu.ch2.forkjoin.sum;
 
 import cn.enjoyedu.tools.SleepTools;
 
+/**
+ * 单线程执行累加
+ */
 public class SumNormal {
 
     public static void main(String[] args) {

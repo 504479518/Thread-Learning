@@ -19,9 +19,14 @@ public class UseFuture {
         @Override
         public Integer call() throws Exception {
             System.out.println("Callable子线程开始计算！");
-            Thread.sleep(2000);
+//			Thread.sleep(1000);
             for (int i = 0; i < 5000; i++) {
+                if (Thread.currentThread().isInterrupted()) {
+                    System.out.println("Callable子线程计算任务中断！");
+                    return null;
+                }
                 sum = sum + i;
+                System.out.println("sum=" + sum);
             }
             System.out.println("Callable子线程计算结束！结果为: " + sum);
             return sum;
@@ -32,15 +37,16 @@ public class UseFuture {
             throws InterruptedException, ExecutionException {
 
         UseCallable useCallable = new UseCallable();
-        FutureTask<Integer> futureTask //用FutureTask包装Callable
-                = new FutureTask<>(useCallable);
-        new Thread(futureTask).start();//交给Thread去运行
+        //包装
+        FutureTask<Integer> futureTask = new FutureTask<>(useCallable);
         Random r = new Random();
-        Thread.sleep(1000);
-        if (r.nextBoolean()) {//用随机的方式决定是获得结果还是终止任务
+        new Thread(futureTask).start();
+
+        Thread.sleep(1);
+        if (r.nextInt(100) > 50) {
             System.out.println("Get UseCallable result = " + futureTask.get());
         } else {
-            System.out.println("中断计算。  ");
+            System.out.println("Cancel................. ");
             futureTask.cancel(true);
         }
 

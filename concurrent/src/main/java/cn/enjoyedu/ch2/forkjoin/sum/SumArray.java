@@ -5,9 +5,13 @@ import cn.enjoyedu.tools.SleepTools;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
 
+/**
+ * ForkJoin执行累加
+ */
 public class SumArray {
     private static class SumTask extends RecursiveTask<Integer> {
 
+        /*阈值*/
         private final static int THRESHOLD = MakeArray.ARRAY_LENGTH / 10;
         private int[] src;
         private int fromIndex;
@@ -21,8 +25,10 @@ public class SumArray {
 
         @Override
         protected Integer compute() {
+            /*任务的大小是否合适*/
             if (toIndex - fromIndex < THRESHOLD) {
-                System.out.println(" from index = " + fromIndex + " toIndex=" + toIndex);
+//                System.out.println(" from index = "+fromIndex
+//                        +" toIndex="+toIndex);
                 int count = 0;
                 for (int i = fromIndex; i <= toIndex; i++) {
                     SleepTools.ms(1);
@@ -43,9 +49,10 @@ public class SumArray {
 
     public static void main(String[] args) {
 
-        ForkJoinPool pool = new ForkJoinPool();
         int[] src = MakeArray.makeArray();
-
+        /*new出池的实例*/
+        ForkJoinPool pool = new ForkJoinPool();
+        /*new出Task的实例*/
         SumTask innerFind = new SumTask(src, 0, src.length - 1);
 
         long start = System.currentTimeMillis();

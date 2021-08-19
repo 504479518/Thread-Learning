@@ -8,6 +8,7 @@ import java.util.LinkedList;
  */
 public class DBPool {
 
+    // 严格意义来讲存放的是空闲连接
     private static LinkedList<Connection> pool = new LinkedList<Connection>();
 
     public DBPool(int initialSize) {
@@ -18,6 +19,7 @@ public class DBPool {
         }
     }
 
+    // 释放连接
     public void releaseConnection(Connection connection) {
         if (connection != null) {
             synchronized (pool) {
