@@ -3,7 +3,6 @@ package cn.enjoyedu.tools;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author Mark老师   享学课堂 https://enjoy.ke.qq.com
  * <p>
  * 类说明：线程休眠辅助工具类
  */
