@@ -16,8 +16,7 @@ public class SumNormal {
             SleepTools.ms(1);
             count = count + src[i];
         }
-        System.out.println("The count is " + count
-                + " spend time:" + (System.currentTimeMillis() - start) + "ms");
+        System.out.println("The count is " + count + " spend time:" + (System.currentTimeMillis() - start) + "ms");
     }
 
 }

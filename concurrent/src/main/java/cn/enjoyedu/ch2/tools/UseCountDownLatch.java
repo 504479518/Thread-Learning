@@ -12,23 +12,26 @@ public class UseCountDownLatch {
 
     static CountDownLatch latch = new CountDownLatch(6);
 
-    /*初始化线程*/
+    /**
+     * 初始化线程
+     */
     private static class InitThread implements Runnable {
 
+        @Override
         public void run() {
-            System.out.println("Thread_" + Thread.currentThread().getId()
-                    + " ready init work......");
+            System.out.println("Thread_" + Thread.currentThread().getId() + " ready init work......");
             latch.countDown();
             for (int i = 0; i < 2; i++) {
-                System.out.println("Thread_" + Thread.currentThread().getId()
-                        + " ........continue do its work");
+                System.out.println("Thread_" + Thread.currentThread().getId() + " ........continue do its work");
             }
         }
     }
 
-    /*业务线程等待latch的计数器为0完成*/
+    /**
+     * 业务线程等待latch的计数器为0完成
+     */
     private static class BusiThread implements Runnable {
-
+        @Override
         public void run() {
             try {
                 latch.await();
@@ -47,13 +50,11 @@ public class UseCountDownLatch {
             @Override
             public void run() {
                 SleepTools.ms(1);
-                System.out.println("Thread_" + Thread.currentThread().getId()
-                        + " ready init work step 1st......");
+                System.out.println("Thread_" + Thread.currentThread().getId() + " ready init work step 1st......");
                 latch.countDown();
                 System.out.println("begin step 2nd.......");
                 SleepTools.ms(1);
-                System.out.println("Thread_" + Thread.currentThread().getId()
-                        + " ready init work step 2nd......");
+                System.out.println("Thread_" + Thread.currentThread().getId() + " ready init work step 2nd......");
                 latch.countDown();
             }
         }).start();

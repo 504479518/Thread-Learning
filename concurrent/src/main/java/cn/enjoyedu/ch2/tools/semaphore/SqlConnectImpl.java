@@ -10,7 +10,9 @@ import java.util.concurrent.Executor;
  */
 public class SqlConnectImpl implements Connection {
 
-    /*拿一个数据库连接*/
+    /**
+     * 拿一个数据库连接
+     */
     public static final Connection fetchConnection() {
         return new SqlConnectImpl();
     }

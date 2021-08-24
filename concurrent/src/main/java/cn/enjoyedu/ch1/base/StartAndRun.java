@@ -5,7 +5,6 @@ package cn.enjoyedu.ch1.base;
  */
 public class StartAndRun {
     public static class ThreadRun extends Thread {
-
         @Override
         public void run() {
             int i = 90;
@@ -15,8 +14,7 @@ public class StartAndRun {
                 } catch (InterruptedException e) {
                     //e.printStackTrace();
                 }
-                System.out.println("I am " + Thread.currentThread().getName()
-                        + " and now the i=" + i--);
+                System.out.println("I am " + Thread.currentThread().getName() + " and now the i=" + i--);
             }
         }
     }

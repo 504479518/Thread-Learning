@@ -6,7 +6,9 @@ package cn.enjoyedu.ch1.wn;
 public class TestWN {
     private static Express express = new Express(0, Express.CITY);
 
-    /*检查里程数变化的线程,不满足条件，线程一直等待*/
+    /**
+     * 检查里程数变化的线程,不满足条件，线程一直等待
+     */
     private static class CheckKm extends Thread {
         @Override
         public void run() {
@@ -14,7 +16,9 @@ public class TestWN {
         }
     }
 
-    /*检查地点变化的线程,不满足条件，线程一直等待*/
+    /**
+     * 检查地点变化的线程,不满足条件，线程一直等待
+     */
     private static class CheckSite extends Thread {
         @Override
         public void run() {
@@ -31,6 +35,7 @@ public class TestWN {
         }
 
         Thread.sleep(1000);
-        express.changeKm();//快递地点变化
+        //快递地点变化
+        express.changeKm();
     }
 }

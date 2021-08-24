@@ -23,20 +23,24 @@ public class MergeSort {
     /**
      * 归并排序——将两段排序好的数组结合成一个排序数组
      *
-     * @param left
-     * @param right
-     * @return
+     * @param left  左侧数组
+     * @param right 右侧数组
+     * @return 排序数组
      */
     public static int[] merge(int[] left, int[] right) {
         int[] result = new int[left.length + right.length];
         for (int index = 0, i = 0, j = 0; index < result.length; index++) {
-            if (i >= left.length) {/*左边数组已经取完，完全取右边数组的值即可*/
+            if (i >= left.length) {
+                /*左边数组已经取完，完全取右边数组的值即可*/
                 result[index] = right[j++];
-            } else if (j >= right.length) {/*右边数组已经取完，完全取左边数组的值即可*/
+            } else if (j >= right.length) {
+                /*右边数组已经取完，完全取左边数组的值即可*/
                 result[index] = left[i++];
-            } else if (left[i] > right[j]) {/*左边数组的元素值大于右边数组，取右边数组的值*/
+            } else if (left[i] > right[j]) {
+                /*左边数组的元素值大于右边数组，取右边数组的值*/
                 result[index] = right[j++];
-            } else {/*右边数组的元素值大于左边数组，取左边数组的值*/
+            } else {
+                /*右边数组的元素值大于左边数组，取左边数组的值*/
                 result[index] = left[i++];
             }
         }

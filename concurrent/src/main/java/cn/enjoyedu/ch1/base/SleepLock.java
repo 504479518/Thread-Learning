@@ -1,7 +1,7 @@
 package cn.enjoyedu.ch1.base;
 
 /**
- *类说明：测试Sleep对锁的影响
+ * 类说明：测试Sleep对锁的影响
  */
 public class SleepLock {
     private Object lock = new Object();
@@ -22,18 +22,16 @@ public class SleepLock {
         threadB.start();
     }
 
-    private class ThreadSleep extends Thread{
-
+    private class ThreadSleep extends Thread {
         @Override
-        public void run()         {
+        public void run() {
             String threadName = Thread.currentThread().getName();
-            System.out.println(threadName+" will take the lock");
+            System.out.println(threadName + " will take the lock");
             try {
-
-                synchronized(lock) {
-                    System.out.println(threadName+" taking the lock");
+                synchronized (lock) {
+                    System.out.println(threadName + " taking the lock");
                     Thread.sleep(5000);
-                    System.out.println("Finish the work: "+threadName);
+                    System.out.println("Finish the work: " + threadName);
                 }
             } catch (InterruptedException e) {
                 //e.printStackTrace();
@@ -41,15 +39,14 @@ public class SleepLock {
         }
     }
 
-    private class ThreadNotSleep extends Thread{
-
+    private class ThreadNotSleep extends Thread {
         @Override
-        public void run()         {
+        public void run() {
             String threadName = Thread.currentThread().getName();
-            System.out.println(threadName+" will take the lock time="+System.currentTimeMillis());
-            synchronized(lock) {
-                System.out.println(threadName+" taking the lock time="+System.currentTimeMillis());
-                System.out.println("Finish the work: "+threadName);
+            System.out.println(threadName + " will take the lock time=" + System.currentTimeMillis());
+            synchronized (lock) {
+                System.out.println(threadName + " taking the lock time=" + System.currentTimeMillis());
+                System.out.println("Finish the work: " + threadName);
             }
         }
     }

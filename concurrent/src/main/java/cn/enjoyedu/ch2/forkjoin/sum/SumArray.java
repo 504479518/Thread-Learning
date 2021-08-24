@@ -27,8 +27,7 @@ public class SumArray {
         protected Integer compute() {
             /*任务的大小是否合适*/
             if (toIndex - fromIndex < THRESHOLD) {
-//                System.out.println(" from index = "+fromIndex
-//                        +" toIndex="+toIndex);
+                System.out.println(" from index = " + fromIndex + " toIndex=" + toIndex);
                 int count = 0;
                 for (int i = fromIndex; i <= toIndex; i++) {
                     SleepTools.ms(1);
@@ -60,8 +59,7 @@ public class SumArray {
         pool.invoke(innerFind);
         //System.out.println("Task is Running.....");
 
-        System.out.println("The count is " + innerFind.join()
-                + " spend time:" + (System.currentTimeMillis() - start) + "ms");
+        System.out.println("The count is " + innerFind.join() + " spend time:" + (System.currentTimeMillis() - start) + "ms");
 
     }
 }

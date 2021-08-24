@@ -10,13 +10,14 @@ public class InsertionSort {
         if (array.length == 0) {
             return array;
         }
-        int currentValue;/*当前待排序数据，该元素之前的元素均已被排序过*/
+        /*当前待排序数据，该元素之前的元素均已被排序过*/
+        int currentValue;
         for (int i = 0; i < array.length - 1; i++) {
-            int preIndex = i;/*已被排序数据的索引*/
+            /*已被排序数据的索引*/
+            int preIndex = i;
             currentValue = array[preIndex + 1];
 
-            /*在已被排序过数据中倒序寻找合适的位置，如果当前待排序数据比比较的元素要小，
-            将比较的元素元素后移一位*/
+            /*在已被排序过数据中倒序寻找合适的位置，如果当前待排序数据比比较的元素要小，将比较的元素元素后移一位*/
             while (preIndex >= 0 && currentValue < array[preIndex]) {
                 //将当前元素后移一位
                 array[preIndex + 1] = array[preIndex];

@@ -6,8 +6,7 @@ import java.util.concurrent.atomic.AtomicStampedReference;
  * 类说明：演示带版本戳的原子操作类
  */
 public class UseAtomicStampedReference {
-    static AtomicStampedReference<String> asr
-            = new AtomicStampedReference("mark", 0);
+    static AtomicStampedReference<String> asr = new AtomicStampedReference("mark", 0);
 
     public static void main(String[] args) throws InterruptedException {
         //拿到当前的版本号(旧)

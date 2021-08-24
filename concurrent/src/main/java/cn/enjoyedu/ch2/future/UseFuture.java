@@ -12,7 +12,9 @@ import java.util.concurrent.FutureTask;
 public class UseFuture {
 
 
-    /*实现Callable接口，允许有返回值*/
+    /**
+     * 实现Callable接口，允许有返回值
+     */
     private static class UseCallable implements Callable<Integer> {
         private int sum;
 
@@ -33,8 +35,7 @@ public class UseFuture {
         }
     }
 
-    public static void main(String[] args)
-            throws InterruptedException, ExecutionException {
+    public static void main(String[] args) throws InterruptedException, ExecutionException {
 
         UseCallable useCallable = new UseCallable();
         //包装
@@ -49,7 +50,5 @@ public class UseFuture {
             System.out.println("Cancel................. ");
             futureTask.cancel(true);
         }
-
     }
-
 }

@@ -9,8 +9,14 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class ExpressCondOneLock {
     public final static String CITY = "ShangHai";
-    private int km;/*快递运输里程数*/
-    private String site;/*快递到达地点*/
+    /**
+     * 快递运输里程数
+     */
+    private int km;
+    /**
+     * 快递到达地点
+     */
+    private String site;
     private Lock lock = new ReentrantLock();
     private Condition kmCond = lock.newCondition();
     private Condition siteCond = lock.newCondition();
@@ -23,7 +29,9 @@ public class ExpressCondOneLock {
         this.site = site;
     }
 
-    /* 变化公里数，然后通知处于wait状态并需要处理公里数的线程进行业务处理*/
+    /**
+     * 变化公里数，然后通知处于wait状态并需要处理公里数的线程进行业务处理
+     */
     public void changeKm() {
         lock.lock();
         try {
@@ -36,7 +44,9 @@ public class ExpressCondOneLock {
 
     }
 
-    /* 变化地点，然后通知处于wait状态并需要处理地点的线程进行业务处理*/
+    /**
+     * 变化地点，然后通知处于wait状态并需要处理地点的线程进行业务处理
+     */
     public void changeSite() {
         lock.lock();
         try {
@@ -47,7 +57,9 @@ public class ExpressCondOneLock {
         }
     }
 
-    /*当快递的里程数大于100时更新数据库*/
+    /**
+     * 当快递的里程数大于100时更新数据库
+     */
     public void waitKm() {
         lock.lock();
         try {
@@ -68,7 +80,9 @@ public class ExpressCondOneLock {
         System.out.println("the Km is " + this.km + ",I will change db");
     }
 
-    /*当快递到达目的地时通知用户*/
+    /**
+     * 当快递到达目的地时通知用户
+     */
     public void waitSite() {
         lock.lock();
         try {
@@ -85,7 +99,6 @@ public class ExpressCondOneLock {
         } finally {
             lock.unlock();
         }
-
         System.out.println("the site is " + this.site + ",I will call user");
     }
 }

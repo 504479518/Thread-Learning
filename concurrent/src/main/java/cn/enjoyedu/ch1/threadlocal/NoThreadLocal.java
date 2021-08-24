@@ -30,11 +30,10 @@ public class NoThreadLocal {
         }
 
         @Override
-        public void run()         {
+        public void run() {
             System.out.println(Thread.currentThread().getName() + ":start");
             count = count + id;
-            System.out.println(Thread.currentThread().getName() + ":"
-                    + count);
+            System.out.println(Thread.currentThread().getName() + ":" + count);
         }
     }
 

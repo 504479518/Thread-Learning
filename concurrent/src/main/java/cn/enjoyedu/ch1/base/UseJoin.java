@@ -27,19 +27,17 @@ public class UseJoin {
             } catch (InterruptedException e) {
             }
             SleepTools.second(2);//休眠2秒
-            System.out.println(Thread.currentThread().getName()
-                    + " Goddess打饭完成.");
+            System.out.println(Thread.currentThread().getName() + " Goddess打饭完成.");
         }
     }
 
     static class GoddessBoyfriend implements Runnable {
-
         @Override
         public void run() {
-            SleepTools.second(2);//休眠2秒
+            //休眠2秒
+            SleepTools.second(2);
             System.out.println("GoddessBoyfriend开始排队打饭.....");
-            System.out.println(Thread.currentThread().getName()
-                    + " GoddessBoyfriend打饭完成.");
+            System.out.println(Thread.currentThread().getName() + " GoddessBoyfriend打饭完成.");
         }
     }
 
@@ -55,7 +53,8 @@ public class UseJoin {
         gbf.start();
         System.out.println("lison开始排队打饭.....");
         g.join();
-        SleepTools.second(2);//让主线程休眠2秒
+        //让主线程休眠2秒
+        SleepTools.second(2);
         System.out.println(Thread.currentThread().getName() + " lison打饭完成.");
     }
 }

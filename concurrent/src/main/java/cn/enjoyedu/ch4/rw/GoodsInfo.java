@@ -5,8 +5,14 @@ package cn.enjoyedu.ch4.rw;
  */
 public class GoodsInfo {
     private final String name;
-    private double totalMoney;//总销售额
-    private int storeNumber;//库存数
+    /**
+     * 总销售额
+     */
+    private double totalMoney;
+    /**
+     * 库存数
+     */
+    private int storeNumber;
 
     public GoodsInfo(String name, int totalMoney, int storeNumber) {
         this.name = name;

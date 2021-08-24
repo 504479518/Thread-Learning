@@ -3,6 +3,9 @@ package cn.enjoyedu.ch2;
 import java.util.Random;
 import java.util.concurrent.LinkedBlockingDeque;
 
+/**
+ * 工作密取
+ */
 public class SecretWorkFetch {
     private static class Work implements Runnable {
         private static Object object = new Object();

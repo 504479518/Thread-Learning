@@ -5,7 +5,14 @@ package cn.enjoyedu.ch1.threadlocal;
  */
 public class UseThreadLocal {
 
-    //TODO
+    private static ThreadLocal<Integer> intLocal = new ThreadLocal<Integer>() {
+        @Override
+        protected Integer initialValue() {
+            return 1;
+        }
+    };
+
+    private static ThreadLocal<String> stringThreadLocal;
 
     /**
      * 运行3个线程
@@ -33,8 +40,11 @@ public class UseThreadLocal {
         @Override
         public void run() {
             System.out.println(Thread.currentThread().getName() + ":start");
-            //TODO
-
+            Integer s = intLocal.get();
+            s = s + id;
+            intLocal.set(s);
+            System.out.println(Thread.currentThread().getName() + ":" + intLocal.get());
+            //intLocal.remove();
         }
     }
 

@@ -1,5 +1,7 @@
 package cn.enjoyedu.ch1.threadlocal;
 
+import cn.enjoyedu.tools.SleepTools;
+
 /**
  * 类说明：ThreadLocal的线程不安全演示
  */
@@ -14,7 +16,7 @@ public class ThreadLocalUnsafe implements Runnable {
         number.setNum(i++);
         //将其存储到ThreadLocal中
         value.set(number);
-        //SleepTools.ms(2);
+        SleepTools.ms(2);
         //输出num值
         System.out.println(Thread.currentThread().getName() + "=" + value.get().getNum());
     }

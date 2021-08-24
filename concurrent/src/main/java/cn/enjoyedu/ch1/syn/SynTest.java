@@ -6,7 +6,10 @@ package cn.enjoyedu.ch1.syn;
 public class SynTest {
 
     private long count = 0;
-    private Object obj = new Object();//作为一个锁
+    /**
+     * 作为一个锁
+     */
+    private Object obj = new Object();
 
     public long getCount() {
         return count;
@@ -16,7 +19,9 @@ public class SynTest {
         this.count = count;
     }
 
-    /*用在同步块上*/
+    /**
+     * 用在同步块上
+     */
     public void incCount() {
         synchronized (obj) {
             count++;
@@ -60,6 +65,7 @@ public class SynTest {
         count1.start();
         count2.start();
         Thread.sleep(50);
-        System.out.println(simplOper.count);//20000
+        //20000
+        System.out.println(simplOper.count);
     }
 }

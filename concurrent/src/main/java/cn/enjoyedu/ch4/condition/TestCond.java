@@ -6,7 +6,9 @@ package cn.enjoyedu.ch4.condition;
 public class TestCond {
     private static ExpressCond express = new ExpressCond(0, ExpressCond.CITY);
 
-    /*检查里程数变化的线程,不满足条件，线程一直等待*/
+    /**
+     * 检查里程数变化的线程,不满足条件，线程一直等待
+     */
     private static class CheckKm extends Thread {
         @Override
         public void run() {
@@ -14,7 +16,9 @@ public class TestCond {
         }
     }
 
-    /*检查地点变化的线程,不满足条件，线程一直等待*/
+    /**
+     * 检查地点变化的线程,不满足条件，线程一直等待
+     */
     private static class CheckSite extends Thread {
         @Override
         public void run() {

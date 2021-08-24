@@ -10,7 +10,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class HalfAtomicInt {
     private AtomicInteger atomicI = new AtomicInteger(0);
 
-    /*请完成这个递增方法*/
+    /**
+     * 请完成这个递增方法
+     */
     public void increament() {
         for (; ; ) {
             int i = getCount();
@@ -44,5 +46,4 @@ public class HalfAtomicInt {
         Thread.sleep(1000);
         System.out.println(halfAtomicInt.getCount());
     }
-
 }

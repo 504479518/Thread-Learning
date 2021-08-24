@@ -1,8 +1,5 @@
 package cn.enjoyedu.ch1.pool;
 
-import javafx.concurrent.Worker;
-import org.apache.commons.lang.StringUtils;
-
 import java.sql.Connection;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -12,19 +9,23 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class DBPoolTest {
     static DBPool pool = new DBPool(10);
-    // 控制器:控制main线程将会等待所有Woker结束后才能继续执行
+    /**
+     * 控制器:控制main线程将会等待所有Woker结束后才能继续执行
+     */
     static CountDownLatch end;
 
     public static void main(String[] args) throws Exception {
         // 线程数量
         int threadCount = 50;
         end = new CountDownLatch(threadCount);
-        int count = 20;//每个线程的操作次数
-        AtomicInteger got = new AtomicInteger();//计数器：统计可以拿到连接的线程
-        AtomicInteger notGot = new AtomicInteger();//计数器：统计没有拿到连接的线程
+        //每个线程的操作次数
+        int count = 20;
+        //计数器：统计可以拿到连接的线程
+        AtomicInteger got = new AtomicInteger();
+        //计数器：统计没有拿到连接的线程
+        AtomicInteger notGot = new AtomicInteger();
         for (int i = 0; i < threadCount; i++) {
-            Thread thread = new Thread(new Worker(count, got, notGot),
-                    "worker_" + i);
+            Thread thread = new Thread(new Worker(count, got, notGot), "worker_" + i);
             thread.start();
         }
         end.await();// main线程在此处等待
@@ -67,7 +68,6 @@ public class DBPoolTest {
                         System.out.println(Thread.currentThread().getName() + "等待超时!");
                     }
                 } catch (Exception ex) {
-
                 } finally {
                     count--;
                 }

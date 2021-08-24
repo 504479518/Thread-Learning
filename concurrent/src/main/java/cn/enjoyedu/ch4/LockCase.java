@@ -8,7 +8,10 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class LockCase {
     private Lock lock = new ReentrantLock();
-    private int age = 100000;//初始100000
+    /**
+     * 初始100000
+     */
+    private int age = 100000;
 
     private static class TestThread extends Thread {
 
@@ -56,7 +59,8 @@ public class LockCase {
         LockCase lockCase = new LockCase();
         Thread endThread = new TestThread(lockCase, "endThread");
         endThread.start();
-        for (int i = 0; i < 100000; i++) {//递减100000
+        //递减100000
+        for (int i = 0; i < 100000; i++) {
             lockCase.test2();
         }
         System.out.println(Thread.currentThread().getName()

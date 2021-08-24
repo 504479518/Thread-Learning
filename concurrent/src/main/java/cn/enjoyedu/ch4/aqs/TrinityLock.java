@@ -6,11 +6,13 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 
 /**
- *类说明：共享同步工具类
+ * 类说明：共享同步工具类
  */
-public class TrinityLock  implements Lock {
+public class TrinityLock implements Lock {
 
-    //为n表示允许n个线程同时获得锁
+    /**
+     * 为n表示允许n个线程同时获得锁
+     */
     private final Sync sync = new Sync(4);
 
     private static final class Sync extends AbstractQueuedSynchronizer {
@@ -24,14 +26,13 @@ public class TrinityLock  implements Lock {
         }
 
         /**
-         *
-         * @param reduceCount  扣减个数
-         * @return  返回小于0，表示当前线程获得同步状态失败
+         * @param reduceCount 扣减个数
+         * @return 返回小于0，表示当前线程获得同步状态失败
          * 大于0，表示当前线程获得同步状态成功
          */
         @Override
         public int tryAcquireShared(int reduceCount) {
-            for (;;) {
+            for (; ; ) {
                 int current = getState();
                 int newCount = current - reduceCount;
                 if (newCount < 0 || compareAndSetState(current, newCount)) {
@@ -41,12 +42,12 @@ public class TrinityLock  implements Lock {
         }
 
         /**
-         *
          * @param returnCount 归还个数
          * @return
          */
+        @Override
         public boolean tryReleaseShared(int returnCount) {
-            for (;;) {
+            for (; ; ) {
                 int current = getState();
                 int newCount = current + returnCount;
                 if (compareAndSetState(current, newCount)) {
@@ -60,22 +61,27 @@ public class TrinityLock  implements Lock {
         }
     }
 
+    @Override
     public void lock() {
         sync.acquireShared(1);
     }
 
+    @Override
     public void unlock() {
         sync.releaseShared(1);
     }
 
+    @Override
     public void lockInterruptibly() throws InterruptedException {
         sync.acquireSharedInterruptibly(1);
     }
 
+    @Override
     public boolean tryLock() {
         return sync.tryAcquireShared(1) >= 0;
     }
 
+    @Override
     public boolean tryLock(long time, TimeUnit unit) throws InterruptedException {
         return sync.tryAcquireSharedNanos(1, unit.toNanos(time));
     }

@@ -19,7 +19,6 @@ public class NewThread {
 
     /*实现Runnable接口*/
     private static class UseRunnable implements Runnable {
-
         @Override
         public void run() {
             // do my work;
@@ -28,15 +27,11 @@ public class NewThread {
     }
 
 
-    public static void main(String[] args)
-            throws InterruptedException, ExecutionException {
+    public static void main(String[] args) throws InterruptedException, ExecutionException {
         UseThread useThread = new UseThread();
         useThread.start();
         useThread.start();
-
         UseRunnable useRunnable = new UseRunnable();
         new Thread(useRunnable).start();
-
-
     }
 }

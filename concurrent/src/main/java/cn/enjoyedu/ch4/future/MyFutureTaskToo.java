@@ -9,17 +9,23 @@ import java.util.concurrent.TimeUnit;
  * 类说明：FutureTask的get方法实现：
  */
 public class MyFutureTaskToo<V> implements Runnable, Future<V> {
-
-    Callable<V> callable;  //封装业务逻辑
-
-    V result = null; //执行结果
+    /**
+     * 封装业务逻辑
+     */
+    Callable<V> callable;
+    /**
+     * 执行结果
+     */
+    V result = null;
 
     public MyFutureTaskToo(Callable<V> callable) {
         this.callable = callable;
     }
 
 
-    //多线程执行run
+    /**
+     * 多线程执行run
+     */
     @Override
     public void run() {
         try {
@@ -40,7 +46,8 @@ public class MyFutureTaskToo<V> implements Runnable, Future<V> {
         }
         System.out.println("等待执行结果……等待中");
         synchronized (this) {
-            this.wait();  //等待futurtask执行完，全部线程…………。
+            //等待futurtask执行完，全部线程…………。
+            this.wait();
         }
         return result;
     }

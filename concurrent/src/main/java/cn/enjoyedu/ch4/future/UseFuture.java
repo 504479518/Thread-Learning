@@ -10,7 +10,9 @@ import java.util.concurrent.ExecutionException;
 public class UseFuture {
 
 
-    /*实现Callable接口，允许有返回值*/
+    /**
+     * 实现Callable接口，允许有返回值
+     */
     private static class UseCallable implements Callable<Integer> {
         private int sum;
 
@@ -30,25 +32,21 @@ public class UseFuture {
             throws InterruptedException, ExecutionException {
 
         UseCallable useCallable = new UseCallable();
-        final MyFutureTask<Integer> futureTask //用FutureTask包装Callable
+        //用FutureTask包装Callable
+        final MyFutureTask<Integer> futureTask
                 = new MyFutureTask<>(useCallable);
-        new Thread(futureTask).start();//交给Thread去运行
+        //交给Thread去运行
+        new Thread(futureTask).start();
         Thread.sleep(2000);
         System.out.println("Main get UseCallable result = " + futureTask.get());
-        new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-                try {
-                    System.out.println("Sub get UseCallable result = "
-                            + futureTask.get());
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                }
+        new Thread(() -> {
+            try {
+                System.out.println("Sub get UseCallable result = " + futureTask.get());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
             }
-
         }).start();
     }
 

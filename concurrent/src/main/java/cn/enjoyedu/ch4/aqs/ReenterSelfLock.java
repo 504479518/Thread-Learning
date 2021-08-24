@@ -9,7 +9,9 @@ import java.util.concurrent.locks.Lock;
  * 类说明：实现我们自己独占锁,可重入
  */
 public class ReenterSelfLock implements Lock {
-    // 静态内部类，自定义同步器
+    /**
+     * 静态内部类，自定义同步器
+     */
     private static class Sync extends AbstractQueuedSynchronizer {
 
         // 是否处于占用状态
@@ -53,7 +55,9 @@ public class ReenterSelfLock implements Lock {
         }
     }
 
-    // 仅需要将操作代理到Sync上即可
+    /**
+     * 仅需要将操作代理到Sync上即可
+     */
     private final Sync sync = new Sync();
 
     @Override

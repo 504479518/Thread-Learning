@@ -16,8 +16,8 @@ public class TestMyLock {
             @Override
             public void run() {
                 lock.lock();
-                System.out.println(Thread.currentThread().getName());
                 try {
+                    System.out.println(Thread.currentThread().getName());
                     SleepTools.second(1);
                 } finally {
                     lock.unlock();

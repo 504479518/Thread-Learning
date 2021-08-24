@@ -9,7 +9,8 @@ public class UseAtomicReference {
     static AtomicReference<UserInfo> atomicUserRef;
 
     public static void main(String[] args) {
-        UserInfo user = new UserInfo("Mark", 15);//要修改的实体的实例
+        //要修改的实体的实例
+        UserInfo user = new UserInfo("Mark", 15);
         atomicUserRef = new AtomicReference(user);
         UserInfo updateUser = new UserInfo("Bill", 17);
         atomicUserRef.compareAndSet(user, updateUser);
@@ -18,7 +19,9 @@ public class UseAtomicReference {
         System.out.println(user);
     }
 
-    //定义一个实体类
+    /**
+     * 定义一个实体类
+     */
     static class UserInfo {
         private volatile String name;
         private int age;
@@ -38,10 +41,7 @@ public class UseAtomicReference {
 
         @Override
         public String toString() {
-            return "UserInfo{" +
-                    "name='" + name + '\'' +
-                    ", age=" + age +
-                    '}';
+            return "UserInfo{" + "name='" + name + '\'' + ", age=" + age + '}';
         }
     }
 

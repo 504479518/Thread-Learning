@@ -28,11 +28,12 @@ public class DBPoolNoUseless {
         this.useful = new Semaphore(10);
     }
 
-    /*归还连接*/
+    /**
+     * 归还连接
+     */
     public void returnConnect(Connection connection) throws InterruptedException {
         if (connection != null) {
-            System.out.println("当前有" + useful.getQueueLength() + "个线程等待数据库连接!!"
-                    + "可用连接数：" + useful.availablePermits());
+            System.out.println("当前有" + useful.getQueueLength() + "个线程等待数据库连接!!" + "可用连接数：" + useful.availablePermits());
             synchronized (pool) {
                 pool.addLast(connection);
             }
@@ -40,7 +41,9 @@ public class DBPoolNoUseless {
         }
     }
 
-    /*从池子拿连接*/
+    /**
+     * 从池子拿连接
+     */
     public Connection takeConnect() throws InterruptedException {
         useful.acquire();
         Connection connection;
@@ -55,12 +58,13 @@ public class DBPoolNoUseless {
     private static class BusiThread extends Thread {
         @Override
         public void run() {
-            Random r = new Random();//让每个线程持有连接的时间不一样
+            //让每个线程持有连接的时间不一样
+            Random r = new Random();
             long start = System.currentTimeMillis();
             try {
-                System.out.println("Thread_" + Thread.currentThread().getId()
-                        + "_获取数据库连接共耗时【" + (System.currentTimeMillis() - start) + "】ms.");
-                SleepTools.ms(100 + r.nextInt(100));//模拟业务操作，线程持有连接查询数据
+                System.out.println("Thread_" + Thread.currentThread().getId() + "_获取数据库连接共耗时【" + (System.currentTimeMillis() - start) + "】ms.");
+                //模拟业务操作，线程持有连接查询数据
+                SleepTools.ms(100 + r.nextInt(100));
                 System.out.println("查询数据完成，归还连接！");
                 dbPoolNoUseless.returnConnect(new SqlConnectImpl());
             } catch (InterruptedException e) {

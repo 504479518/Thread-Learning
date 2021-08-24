@@ -14,9 +14,8 @@ public class VolatileCase {
         public void run() {
             System.out.println("PrintThread is running.......");
             while (!ready) {
-                ;
+                System.out.println("number = " + number);
             }
-            System.out.println("number = " + number);
         }
     }
 

@@ -13,6 +13,7 @@ public class AtomicArray {
     public static void main(String[] args) {
         ai.getAndSet(0, 3);
         System.out.println(ai.get(0));
-        System.out.println(value[0]);//原数组不会变化
+        //原数组不会变化
+        System.out.println(value[0]);
     }
 }

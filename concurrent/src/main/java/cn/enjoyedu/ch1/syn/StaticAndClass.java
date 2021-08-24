@@ -10,8 +10,7 @@ public class StaticAndClass {
     private static class SynClass extends Thread {
         @Override
         public void run() {
-            System.out.println(currentThread().getName()
-                    + ":SynClass is running...");
+            System.out.println(currentThread().getName() + ":SynClass is running...");
             synClass();
         }
     }
@@ -19,29 +18,24 @@ public class StaticAndClass {
     private static class SynStatic extends Thread {
         @Override
         public void run() {
-            System.out.println(currentThread().getName()
-                    + "SynStatic is running...");
+            System.out.println(currentThread().getName() + "SynStatic is running...");
             synStatic();
         }
     }
 
     private static synchronized void synClass() {
-        System.out.println(Thread.currentThread().getName()
-                + "synClass going...");
+        System.out.println(Thread.currentThread().getName() + "synClass going...");
         SleepTools.second(1);
-        System.out.println(Thread.currentThread().getName()
-                + "synClass end");
+        System.out.println(Thread.currentThread().getName() + "synClass end");
     }
 
     private static Object obj = new Object();
 
     private static void synStatic() {
         synchronized (obj) {
-            System.out.println(Thread.currentThread().getName()
-                    + "synStatic going...");
+            System.out.println(Thread.currentThread().getName() + "synStatic going...");
             SleepTools.second(1);
-            System.out.println(Thread.currentThread().getName()
-                    + "synStatic end");
+            System.out.println(Thread.currentThread().getName() + "synStatic end");
         }
     }
 

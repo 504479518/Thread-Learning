@@ -14,8 +14,15 @@ public class UseRwLock implements GoodsService {
     private GoodsInfo goodsInfo;
 
     private final ReadWriteLock lock = new ReentrantReadWriteLock();
-    private final Lock getLock = lock.readLock();//读锁
-    private final Lock setLock = lock.writeLock();//写锁
+    /**
+     * 读锁
+     */
+    private final Lock getLock = lock.readLock();
+
+    /**
+     * 写锁
+     */
+    private final Lock setLock = lock.writeLock();
 
     public UseRwLock(GoodsInfo goodsInfo) {
         this.goodsInfo = goodsInfo;
