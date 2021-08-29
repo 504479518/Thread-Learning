@@ -10,11 +10,9 @@ public class EndRunnable {
         @Override
         public void run() {
             while (!Thread.currentThread().isInterrupted()) {
-                System.out.println(Thread.currentThread().getName()
-                        + " I am implements Runnable.");
+                System.out.println(Thread.currentThread().getName() + " I am implements Runnable.");
             }
-            System.out.println(Thread.currentThread().getName()
-                    + " interrupt flag is " + Thread.currentThread().isInterrupted());
+            System.out.println(Thread.currentThread().getName() + " interrupt flag is " + Thread.currentThread().isInterrupted());
         }
     }
 
@@ -25,5 +23,4 @@ public class EndRunnable {
         Thread.sleep(20);
         endThread.interrupt();
     }
-
 }
