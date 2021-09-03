@@ -98,7 +98,7 @@ package cn.enjoyedu.ch5.src;///*
 // * Java Collections Framework</a>.
 // *
 // * @since 1.5
-// * @author Doug Lea
+// * @author 情似皓月
 // * @param <K> the type of keys maintained by this map
 // * @param <V> the type of mapped values
 // */
