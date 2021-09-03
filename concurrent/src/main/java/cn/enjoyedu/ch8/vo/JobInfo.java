@@ -44,9 +44,7 @@ public class JobInfo<R> {
 
     private static CheckJobProcesser checkJob = CheckJobProcesser.getInstance();
 
-    public JobInfo(String jobName, int jobLength,
-                   ITaskProcesser<?, ?> taskProcesser,
-                   long expireTime) {
+    public JobInfo(String jobName, int jobLength, ITaskProcesser<?, ?> taskProcesser, long expireTime) {
         this.jobName = jobName;
         this.jobLength = jobLength;
         successCount = new AtomicInteger(0);
@@ -83,8 +81,7 @@ public class JobInfo<R> {
      * 提供工作的整体进度信息
      */
     public String getTotalProcess() {
-        return "Success[" + successCount.get() + "]/Current[" + taskProcessCount.get()
-                + "] Total[" + jobLength + "]";
+        return "Success[" + successCount.get() + "]/Current[" + taskProcessCount.get() + "] Total[" + jobLength + "]";
     }
 
     /**

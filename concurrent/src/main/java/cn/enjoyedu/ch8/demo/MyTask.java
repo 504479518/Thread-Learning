@@ -29,8 +29,7 @@ public class MyTask implements ITaskProcesser<Integer, Integer> {
             try {
                 throw new RuntimeException("异常发生了！！");
             } catch (Exception e) {
-                return new TaskResult<Integer>(TaskResultType.Exception,
-                        -1, e.getMessage());
+                return new TaskResult<Integer>(TaskResultType.Exception, -1, e.getMessage());
             }
         }
     }

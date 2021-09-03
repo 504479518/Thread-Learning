@@ -13,22 +13,29 @@ import java.util.concurrent.TimeUnit;
  */
 public class SL_QuestionBank {
 
-    //题库数据存储
+    /**
+     * 题库数据存储
+     */
     private static ConcurrentHashMap<Integer, QuestionInDBVo> questionBankMap = new ConcurrentHashMap<>();
-    //定时任务池，负责定时更新题库数据
+    /**
+     * 定时任务池，负责定时更新题库数据
+     */
     private static ScheduledExecutorService updateQuestionBank = new ScheduledThreadPoolExecutor(1);
 
-    //初始化题库
+    /**
+     * 初始化题库
+     */
     public static void initBank() {
         for (int i = 0; i < Consts.SIZE_OF_QUESTION_BANK; i++) {
             String questionContent = makeQuestionDetail(800);
-            questionBankMap.put(i, new QuestionInDBVo(i,
-                    questionContent, EncryptUtils.EncryptBySHA1(questionContent)));
+            questionBankMap.put(i, new QuestionInDBVo(i, questionContent, EncryptUtils.EncryptBySHA1(questionContent)));
         }
         updateQuestionTimer();
     }
 
-    //生成随机字符串，代表题目的实际内容,length表示题目的长度
+    /**
+     * 生成随机字符串，代表题目的实际内容,length表示题目的长度
+     */
     private static String makeQuestionDetail(int length) {
         String base = "abcdefghijklmnopqrstuvwxyz0123456789";
         Random random = new Random();
@@ -68,8 +75,7 @@ public class SL_QuestionBank {
      */
     private static void updateQuestionTimer() {
         System.out.println("开始定时更新题库..........................");
-        updateQuestionBank.scheduleAtFixedRate(new UpdateBank(),
-                15, 5, TimeUnit.SECONDS);
+        updateQuestionBank.scheduleAtFixedRate(new UpdateBank(), 15, 5, TimeUnit.SECONDS);
     }
 
     /**

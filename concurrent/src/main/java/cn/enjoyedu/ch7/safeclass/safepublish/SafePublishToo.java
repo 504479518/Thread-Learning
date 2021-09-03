@@ -8,8 +8,7 @@ import java.util.List;
  * 安全的发布
  */
 public class SafePublishToo {
-    private List<Integer> list
-            = Collections.synchronizedList(new ArrayList<>(3));
+    private List<Integer> list = Collections.synchronizedList(new ArrayList<>(3));
 
     public SafePublishToo() {
         list.add(1);

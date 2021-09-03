@@ -5,7 +5,9 @@ package cn.enjoyedu.ch7.safeclass;
  */
 public class ImmutableClass {
     private final int a;
-    //不安全
+    /**
+     * 不安全
+     */
     private final UserVo user = new UserVo();
 
     public int getA() {

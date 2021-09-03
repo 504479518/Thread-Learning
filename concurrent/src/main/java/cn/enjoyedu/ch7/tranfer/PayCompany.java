@@ -50,7 +50,5 @@ public class PayCompany {
         TransferThread lisiToZhangsan = new TransferThread("lisiToZhangsan", lisi, zhangsan, 4000, transfer);
         zhangsanToLisi.start();
         lisiToZhangsan.start();
-
     }
-
 }

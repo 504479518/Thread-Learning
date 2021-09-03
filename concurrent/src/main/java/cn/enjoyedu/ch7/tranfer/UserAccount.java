@@ -8,6 +8,7 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class UserAccount {
     //private int id;
+
     /**
      * 账户名称
      */

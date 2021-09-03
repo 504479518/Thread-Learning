@@ -17,7 +17,6 @@ public class QstService {
     public static String makeQuestion(Integer questionId, String questionSrc) {
         Random r = new Random();
         SL_Busi.buisness(450 + r.nextInt(100));
-        return "CompleteQuestion[id=" + questionId
-                + " content=:" + questionSrc + "]";
+        return "CompleteQuestion[id=" + questionId + " content=:" + questionSrc + "]";
     }
 }

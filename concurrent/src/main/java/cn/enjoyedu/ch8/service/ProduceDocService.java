@@ -58,7 +58,6 @@ public class ProduceDocService {
         for (Integer questionId : pendingDocVo.getQuestionList()) {
             TaskResultVo taskResultVo = qstResultMap.get(questionId);
             sb.append(taskResultVo.getQuestionDetail() == null ? taskResultVo.getQuestionFuture().get().getQuestionDetail() : taskResultVo.getQuestionDetail());
-
         }
         return "complete_" + System.currentTimeMillis() + "_" + pendingDocVo.getDocName() + ".pdf";
     }

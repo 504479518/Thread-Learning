@@ -97,11 +97,9 @@ public class ParallelQstService {
         @Override
         public QuestionInCacheVo call() throws Exception {
             try {
-                String questionDetail = QstService
-                        .makeQuestion(questionId, questionDBVo.getDetail());
+                String questionDetail = QstService.makeQuestion(questionId, questionDBVo.getDetail());
                 String questionSha = questionDBVo.getSha();
-                QuestionInCacheVo questionCacheVo
-                        = new QuestionInCacheVo(questionDetail, questionSha);
+                QuestionInCacheVo questionCacheVo = new QuestionInCacheVo(questionDetail, questionSha);
                 questionCache.put(questionId, questionCacheVo);
                 return questionCacheVo;
             } finally {
